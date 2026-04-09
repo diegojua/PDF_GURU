@@ -1,0 +1,13 @@
+{
+  "name": "pdf-guru-supabase",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.35.0",
+    "dotenv": "^17.4.1"
+  },
+  "scripts": {
+    "seed": "node seedUsers.js"
+  }
+}

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#005bbf",
+              "outline-variant": "#c1c6d6",
+              "tertiary": "#805600",
+              "on-secondary": "#ffffff",
+              "primary-container": "#1a73e8",
+              "surface-dim": "#d8dadb",
+              "surface-container-high": "#e6e8e9",
+              "background": "#f8fafb",
+              "primary-fixed": "#d8e2ff",
+              "secondary-fixed": "#cbe6ff",
+              "secondary": "#486176",
+              "on-surface-variant": "#414754",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "tertiary-container": "#a06d00",
+              "secondary-container": "#cbe6ff",
+              "tertiary-fixed-dim": "#ffba45",
+              "on-error-container": "#93000a",
+              "outline": "#727785",
+              "surface-bright": "#f8fafb",
+              "tertiary-fixed": "#ffddb0",
+              "surface-container-highest": "#e1e3e4",
+              "surface-tint": "#005bc0",
+              "surface-container-low": "#f2f4f5",
+              "on-primary-container": "#ffffff",
+              "surface": "#f8fafb",
+              "on-primary-fixed-variant": "#004493",
+              "primary-fixed-dim": "#adc7ff",
+              "on-secondary-fixed": "#001e30",
+              "inverse-on-surface": "#eff1f2",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#eceeef",
+              "on-primary-fixed": "#001a41",
+              "surface-variant": "#e1e3e4",
+              "secondary-fixed-dim": "#afcae2",
+              "on-tertiary-fixed": "#281800",
+              "inverse-surface": "#2e3132",
+              "on-secondary-fixed-variant": "#30495d",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#4e677c",
+              "inverse-primary": "#adc7ff",
+              "on-tertiary-fixed-variant": "#614000",
+              "on-error": "#ffffff",
+              "on-background": "#191c1d",
+              "on-surface": "#191c1d",
+              "error": "#ba1a1a",
+              "on-tertiary-container": "#0a0400"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(248, 250, 251, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .dotted-input {
+            border: 1.5px dashed #1a73e8;
+            background-color: rgba(26, 115, 232, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface antialiased min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm shadow-slate-900/5 flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="text-blue-700 dark:text-blue-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-manrope font-bold tracking-tight text-slate-900 dark:text-slate-50 text-lg">Preencher Formulário</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-5 py-2 rounded-lg font-label text-[11px] font-bold uppercase tracking-wider shadow-sm active:scale-95 transition-all">
+                Salvar
+            </button>
+<button class="text-slate-500 dark:text-slate-400 p-2">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-4 max-w-2xl mx-auto min-h-screen">
+<!-- PDF Document Simulation -->
+<div class="bg-surface-container-lowest shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-xl overflow-hidden mb-8">
+<!-- PDF Header -->
+<div class="p-8 border-b border-surface-container-high flex justify-between items-start">
+<div>
+<h2 class="font-headline font-extrabold text-2xl tracking-tight text-on-background mb-1">CADASTRO DE CLIENTE</h2>
+<p class="text-on-surface-variant text-xs font-label">Código do Documento: #PDF-2024-089-B</p>
+</div>
+<div class="w-16 h-16 bg-surface-container-high rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-3xl" data-icon="corporate_fare">corporate_fare</span>
+</div>
+</div>
+<!-- PDF Body -->
+<div class="p-8 space-y-8">
+<!-- Section: Personal Info -->
+<div class="space-y-6">
+<div class="grid grid-cols-1 gap-4">
+<label class="block">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary mb-2 block">Nome Completo</span>
+<div class="dotted-input p-4 rounded-lg flex items-center justify-between group transition-all duration-300 hover:bg-blue-100/20">
+<span class="text-on-surface font-medium">Marcio Silva Cavalcante</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="edit">edit</span>
+</div>
+</label>
+<label class="block">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary mb-2 block">E-mail Corporativo</span>
+<div class="dotted-input p-4 rounded-lg flex items-center justify-between">
+<span class="text-on-surface-variant italic">digite aqui...</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="alternate_email">alternate_email</span>
+</div>
+</label>
+</div>
+<!-- Row: Date with Picker Active -->
+<div class="relative">
+<label class="block">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary mb-2 block">Data de Nascimento</span>
+<div class="dotted-input p-4 rounded-lg flex items-center justify-between ring-2 ring-primary ring-offset-2">
+<span class="text-on-surface font-medium">12 / 05 / 1992</span>
+<span class="material-symbols-outlined text-primary" data-icon="calendar_today">calendar_today</span>
+</div>
+</label>
+<!-- Data Picker Overlay (Simulated) -->
+<div class="absolute top-full left-0 mt-2 z-40 bg-white shadow-2xl rounded-2xl p-4 w-72 border border-surface-container-high scale-100 origin-top animate-in fade-in zoom-in duration-200">
+<div class="flex justify-between items-center mb-4">
+<span class="font-headline font-bold text-sm">Maio 1992</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-xs p-1 hover:bg-surface-container-low rounded cursor-pointer" data-icon="chevron_left">chevron_left</span>
+<span class="material-symbols-outlined text-xs p-1 hover:bg-surface-container-low rounded cursor-pointer" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center mb-2">
+<div class="text-[9px] font-bold text-outline">D</div>
+<div class="text-[9px] font-bold text-outline">S</div>
+<div class="text-[9px] font-bold text-outline">T</div>
+<div class="text-[9px] font-bold text-outline">Q</div>
+<div class="text-[9px] font-bold text-outline">Q</div>
+<div class="text-[9px] font-bold text-outline">S</div>
+<div class="text-[9px] font-bold text-outline">S</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center">
+<div class="p-2 text-xs text-outline-variant">26</div>
+<div class="p-2 text-xs text-outline-variant">27</div>
+<div class="p-2 text-xs text-outline-variant">28</div>
+<div class="p-2 text-xs text-outline-variant">29</div>
+<div class="p-2 text-xs text-outline-variant">30</div>
+<div class="p-2 text-xs">1</div>
+<div class="p-2 text-xs">2</div>
+<!-- ... truncated for UI ... -->
+<div class="p-2 text-xs bg-primary text-white rounded-lg font-bold">12</div>
+<div class="p-2 text-xs hover:bg-surface-container-low rounded-lg">13</div>
+<div class="p-2 text-xs hover:bg-surface-container-low rounded-lg">14</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Options -->
+<div class="space-y-4 pt-4 border-t border-surface-container-high">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary block">Termos e Condições</span>
+<div class="flex items-center gap-3 p-2">
+<div class="w-6 h-6 border-2 border-primary rounded flex items-center justify-center bg-primary text-white">
+<span class="material-symbols-outlined text-lg" data-icon="check">check</span>
+</div>
+<p class="text-sm text-on-surface">Aceito os termos de processamento de dados.</p>
+</div>
+<div class="flex items-center gap-3 p-2 opacity-60">
+<div class="w-6 h-6 border-2 border-outline rounded flex items-center justify-center"></div>
+<p class="text-sm text-on-surface">Desejo receber novidades por e-mail.</p>
+</div>
+</div>
+<!-- Section: Signature Area -->
+<div class="pt-6">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary mb-2 block">Assinatura Digital</span>
+<div class="w-full h-40 bg-surface-container-low border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center group cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-4xl text-outline-variant group-hover:text-primary mb-2" data-icon="draw">draw</span>
+<p class="text-xs text-outline group-hover:text-primary font-medium">Toque para adicionar sua assinatura</p>
+</div>
+</div>
+</div>
+<!-- PDF Footer -->
+<div class="bg-surface-container-low px-8 py-4 flex justify-between items-center">
+<span class="text-[10px] font-label text-outline uppercase tracking-tighter">Página 1 de 1</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="zoom_in">zoom_in</span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="zoom_out">zoom_out</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<div class="fixed bottom-24 right-6 z-40">
+<button class="flex items-center gap-3 bg-gradient-to-br from-blue-700 to-primary-container text-white py-4 px-6 rounded-2xl shadow-xl shadow-blue-900/20 active:scale-95 duration-150 group">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-headline font-bold text-sm tracking-wide uppercase">Assinar</span>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-8 pt-4 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-2xl shadow-[0_-4px_20px_0_rgba(0,0,0,0.06)] z-50 rounded-t-3xl">
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2.5 hover:text-blue-600 transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="photo_camera">photo_camera</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Scan</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-600 to-blue-500 text-white rounded-2xl px-5 py-2.5 shadow-md">
+<span class="material-symbols-outlined mb-1" data-icon="edit_note">edit_note</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Edit</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2.5 hover:text-blue-600 transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="description">description</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider">OCR</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2.5 hover:text-blue-600 transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="ios_share">ios_share</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Share</span>
+</div>
+</nav>
+<!-- Contextual Overlay Hint (Subtle Backdrop) -->
+<div class="fixed inset-0 pointer-events-none bg-primary/5 z-0"></div>
+</body></html>

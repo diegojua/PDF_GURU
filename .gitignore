@@ -1,0 +1,19 @@
+# Secrets — never commit
+mobile_app/.env
+backend/.env
+supabase/.env
+mobile_app/android/keystore.properties
+mobile_app/android/app/release.keystore
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Node
+node_modules/

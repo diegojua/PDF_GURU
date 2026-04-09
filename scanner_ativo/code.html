@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scanner Ativo - PDF Guru</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#005bbf",
+              "outline-variant": "#c1c6d6",
+              "tertiary": "#805600",
+              "on-secondary": "#ffffff",
+              "primary-container": "#1a73e8",
+              "surface-dim": "#d8dadb",
+              "surface-container-high": "#e6e8e9",
+              "background": "#f8fafb",
+              "primary-fixed": "#d8e2ff",
+              "secondary-fixed": "#cbe6ff",
+              "secondary": "#486176",
+              "on-surface-variant": "#414754",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "tertiary-container": "#a06d00",
+              "secondary-container": "#cbe6ff",
+              "tertiary-fixed-dim": "#ffba45",
+              "on-error-container": "#93000a",
+              "outline": "#727785",
+              "surface-bright": "#f8fafb",
+              "tertiary-fixed": "#ffddb0",
+              "surface-container-highest": "#e1e3e4",
+              "surface-tint": "#005bc0",
+              "surface-container-low": "#f2f4f5",
+              "on-primary-container": "#ffffff",
+              "surface": "#f8fafb",
+              "on-primary-fixed-variant": "#004493",
+              "primary-fixed-dim": "#adc7ff",
+              "on-secondary-fixed": "#001e30",
+              "inverse-on-surface": "#eff1f2",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#eceeef",
+              "on-primary-fixed": "#001a41",
+              "surface-variant": "#e1e3e4",
+              "secondary-fixed-dim": "#afcae2",
+              "on-tertiary-fixed": "#281800",
+              "inverse-surface": "#2e3132",
+              "on-secondary-fixed-variant": "#30495d",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#4e677c",
+              "inverse-primary": "#adc7ff",
+              "on-tertiary-fixed-variant": "#614000",
+              "on-error": "#ffffff",
+              "on-background": "#191c1d",
+              "on-surface": "#191c1d",
+              "error": "#ba1a1a",
+              "on-tertiary-container": "#0a0400"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>.camera-viewfinder {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCw1cIpZHzzuePSB1pxFPYm3hULDCqiSVDsIiuqO7lYhFiFTWEbij3eXYr7xbO2PWcGptrtJldMPOdid1VrpRLq0ilM_rJK0W58cT9ZdZlxQRB-umYV_R7VilV34R8zqWp9FnBbRkF3wzNg1OnsLpECyXA8szoaqat--ct6Dd-9CSUNEuHS_oylUQ5eH5cFui9Hod-VdKuz7ViI962tv1eb1slvtFMO4XQntxMUdn1r5TvwZ9IWNcs0sVWaQMIJG-Xjf2O5gQpBb_ap);
+    background-size: cover;
+    background-position: center
+    }
+.shutter-glow {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3)
+    }
+.edge-detection-overlay {
+    clip-path: polygon(15% 20%, 85% 20%, 88% 80%, 12% 80%);
+    background-color: rgba(26, 115, 232, 0.15);
+    border: 2px solid #1a73e8
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black font-body overflow-hidden h-screen w-full flex flex-col">
+<!-- Viewfinder Container -->
+<div class="relative flex-1 w-full camera-viewfinder" data-alt="POV of a mobile camera scanning a clean white document on a modern wooden desk with natural soft lighting">
+<!-- Top App Bar (Suppressed Shell logic applied - this is a functional overlay) -->
+<header class="absolute top-0 left-0 w-full z-20 flex justify-between items-center px-6 py-8 bg-gradient-to-b from-black/60 to-transparent">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white active:scale-90 transition-all">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center gap-4 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full">
+<button class="text-white opacity-100 flex items-center gap-1">
+<span class="material-symbols-outlined text-xl">flash_auto</span>
+<span class="font-label text-[10px] font-bold uppercase tracking-widest">Auto</span>
+</button>
+<div class="w-[1px] h-4 bg-white/20"></div>
+<button class="text-white opacity-60 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-xl">flash_on</span>
+</button>
+<div class="w-[1px] h-4 bg-white/20"></div>
+<button class="text-white opacity-60 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-xl">flash_off</span>
+</button>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white active:scale-90 transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<!-- Dynamic Framing Guides -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<!-- Detection Box -->
+<div class="edge-detection-overlay w-4/5 h-3/5 rounded-2xl relative">
+<!-- Corner Indicators -->
+<div class="absolute -top-1 -left-1 w-8 h-8 border-t-4 border-l-4 border-primary-container rounded-tl-xl"></div>
+<div class="absolute -top-1 -right-1 w-8 h-8 border-t-4 border-r-4 border-primary-container rounded-tr-xl"></div>
+<div class="absolute -bottom-1 -left-1 w-8 h-8 border-b-4 border-l-4 border-primary-container rounded-bl-xl"></div>
+<div class="absolute -bottom-1 -right-1 w-8 h-8 border-b-4 border-r-4 border-primary-container rounded-br-xl"></div>
+<!-- Pulsing Scanning Line -->
+<div class="absolute top-0 left-0 w-full h-1 bg-primary-container/40 shadow-[0_0_15px_rgba(26,115,232,0.8)] opacity-70 animate-pulse"></div>
+</div>
+</div>
+<!-- Instruction Text -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-32 w-full px-12 text-center z-10">
+<p class="text-white font-headline font-bold text-lg drop-shadow-lg">Posicione o documento dentro do quadro</p>
+<p class="text-white/70 font-label text-xs uppercase tracking-[0.15em] mt-2">Detecção automática ativa</p>
+</div>
+</div>
+<!-- Bottom Controls Area -->
+<div class="relative w-full h-44 bg-black flex items-center justify-between px-10 pb-10">
+<!-- Gallery Import -->
+<div class="flex flex-col items-center gap-2">
+<button class="w-14 h-14 rounded-xl overflow-hidden bg-surface-container-high border-2 border-white/10 flex items-center justify-center active:scale-95 transition-all">
+<img class="w-full h-full object-cover" data-alt="Blurred close up of library books in a shelf with soft aesthetic colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHnhxdfNpr1od4e_9bxrA-lzwmVpE54_7X52K3tWY-ZJpQhc-r-xor0LKup-d1yw4q6WX2HEcpfSb7-jOj42x3D2nZqKtU003DCgYcf69ccr20bEm15PvOAI7Y7rm60qw55zzIOvj3H3ki7rzAcUCQlJ1fkhBaCSrhbavJeX4ph1HiT2cTrfKk9wytAmJUv1U_4dMtwjDc91UiiYpZ4y2bwH4eHYE4IiIq0EKZP9S-T76h6TDYxpfhtaBGg5F4o68jJcC5da8Uz_0A"/>
+</button>
+<span class="text-white/60 font-label text-[10px] uppercase font-bold tracking-widest">Galeria</span>
+</div>
+<!-- Shutter Button -->
+<div class="relative group">
+<div class="absolute -inset-2 rounded-full border border-white/20"></div>
+<button class="w-20 h-20 rounded-full bg-white flex items-center justify-center shutter-glow active:scale-90 transition-all">
+<div class="w-[72px] h-[72px] rounded-full border-2 border-black/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill">camera</span>
+</div>
+</button>
+</div>
+<!-- Recent Capture/Import Button -->
+<div class="flex flex-col items-center gap-2">
+<button class="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center text-white active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl">image_search</span>
+</button>
+<span class="text-white/60 font-label text-[10px] uppercase font-bold tracking-widest">Importar</span>
+</div>
+</div>
+<!-- Status Bar / Notch Simulation Padding -->
+<div class="fixed top-0 left-0 w-full h-6 bg-black/40 z-[100]"></div>
+<!-- Mode Selector Overlay -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-6 px-6 py-2 rounded-full bg-white/5 backdrop-blur-sm z-30 pointer-events-none">
+<span class="text-white font-label text-[10px] font-bold uppercase tracking-widest opacity-40">QR Code</span>
+<span class="text-primary-container font-headline font-extrabold text-xs uppercase tracking-widest flex flex-col items-center">
+            Documento
+            <div class="w-1 h-1 rounded-full bg-primary-container mt-1"></div>
+</span>
+<span class="text-white font-label text-[10px] font-bold uppercase tracking-widest opacity-40">Cartão</span>
+</div>
+</body></html>

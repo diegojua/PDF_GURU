@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PDF Guru - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed": "#d8e2ff",
+              "outline-variant": "#c1c6d6",
+              "on-secondary-fixed": "#001e30",
+              "background": "#f8fafb",
+              "secondary-container": "#cbe6ff",
+              "on-secondary-fixed-variant": "#30495d",
+              "error-container": "#ffdad6",
+              "on-surface-variant": "#414754",
+              "inverse-primary": "#adc7ff",
+              "surface-tint": "#005bc0",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#281800",
+              "on-error-container": "#93000a",
+              "error": "#ba1a1a",
+              "on-primary-fixed": "#001a41",
+              "secondary": "#486176",
+              "on-surface": "#191c1d",
+              "primary": "#005bbf",
+              "secondary-fixed-dim": "#afcae2",
+              "surface-container-high": "#e6e8e9",
+              "tertiary-fixed": "#ffddb0",
+              "on-primary": "#ffffff",
+              "on-primary-container": "#ffffff",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#4e677c",
+              "inverse-surface": "#2e3132",
+              "surface-bright": "#f8fafb",
+              "primary-fixed-dim": "#adc7ff",
+              "surface-dim": "#d8dadb",
+              "surface-container-low": "#f2f4f5",
+              "on-secondary": "#ffffff",
+              "on-tertiary-fixed-variant": "#614000",
+              "tertiary-container": "#a06d00",
+              "tertiary-fixed-dim": "#ffba45",
+              "secondary-fixed": "#cbe6ff",
+              "primary-container": "#1a73e8",
+              "surface": "#f8fafb",
+              "on-background": "#191c1d",
+              "surface-container-highest": "#e1e3e4",
+              "inverse-on-surface": "#eff1f2",
+              "outline": "#727785",
+              "surface-container": "#eceeef",
+              "on-tertiary-container": "#0a0400",
+              "on-error": "#ffffff",
+              "tertiary": "#805600",
+              "on-primary-fixed-variant": "#004493"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(248, 250, 251, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 z-40 bg-slate-50 dark:bg-slate-900">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="text-blue-700 dark:text-blue-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-manrope font-bold text-xl tracking-tight text-blue-700 dark:text-blue-400">PDF Guru</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-blue-700 dark:text-blue-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 h-[2px] w-full"></div>
+</header>
+<main class="px-6 pt-6 space-y-8">
+<!-- Global Search Bar -->
+<section class="relative">
+<div class="flex items-center bg-surface-container-high rounded-xl px-4 py-3 gap-3">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface placeholder-outline font-body text-sm" placeholder="Pesquisar por nome, conteúdo ou tags..." type="text"/>
+<span class="material-symbols-outlined text-outline">tune</span>
+</div>
+</section>
+<!-- Categories Section (Asymmetric Bento Style) -->
+<section>
+<div class="flex justify-between items-end mb-4">
+<h2 class="text-headline-sm font-headline font-bold text-on-surface tracking-tight">Categorias</h2>
+<button class="text-primary text-sm font-medium">Ver todas</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex flex-col justify-between h-32">
+<span class="material-symbols-outlined text-blue-600 bg-blue-50 w-10 h-10 flex items-center justify-center rounded-xl">work</span>
+<div>
+<p class="font-headline font-bold text-on-surface">Trabalho</p>
+<p class="font-label text-xs text-outline">24 arquivos</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-low p-4 rounded-2xl flex items-center gap-3 h-[calc(50%-0.5rem)]">
+<span class="material-symbols-outlined text-orange-600">school</span>
+<p class="font-headline font-semibold text-sm">Estudos</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl flex items-center gap-3 h-[calc(50%-0.5rem)]">
+<span class="material-symbols-outlined text-green-600">person</span>
+<p class="font-headline font-semibold text-sm">Pessoal</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recentes Section (Horizontal Carousel) -->
+<section>
+<div class="flex justify-between items-end mb-4">
+<h2 class="text-headline-sm font-headline font-bold text-on-surface tracking-tight">Recentes</h2>
+</div>
+<div class="flex overflow-x-auto gap-4 pb-2 -mx-6 px-6">
+<!-- Recent Card 1 -->
+<div class="flex-none w-40 group">
+<div class="aspect-[3/4] bg-surface-container-lowest rounded-xl overflow-hidden mb-3 shadow-sm group-active:scale-95 transition-transform">
+<img class="w-full h-full object-cover opacity-90" data-alt="Close-up of a structured business report page with charts and clean typography in a minimalist layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFRRVshhqUFTZFqfLVQTDDF__Mujw5sPX6BN_i7CpmG1pPSF8kwhMI5amTiQm7P5Z-6wyBrJImVbbp-PAby9Pmsbm-GBjMBZW7D8IaxIY301NMXNG7aLXKWCoig5FU_LWyBBKN6kJvZQkqM1m-UjF0af8g7r6-PNywlWcnMHdIA_oPl_iR1o3AWGl9v1RDxLKIxOHhTo9ycrPdZqpgROOlavkjSf03KZgN1BttnEZJhX2MNYLQzkhYBpYyBQSxTy1LRr4-vflpB4ec"/>
+</div>
+<p class="font-headline font-semibold text-sm text-on-surface truncate">Relatório Mensal Q3</p>
+<p class="font-label text-[10px] text-outline uppercase tracking-wider mt-0.5">Hoje, 14:20</p>
+</div>
+<!-- Recent Card 2 -->
+<div class="flex-none w-40 group">
+<div class="aspect-[3/4] bg-surface-container-lowest rounded-xl overflow-hidden mb-3 shadow-sm group-active:scale-95 transition-transform">
+<img class="w-full h-full object-cover opacity-90" data-alt="Technical architectural blueprint with fine lines and detailed measurements on a clean white paper texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi0PpEXJCPkwOUb4xJmv3_XsuN-3np-t3tcY-hlAyzUTfuY-sECkTO9yKdxRrqFys465jON3XDtOMdJGTDwnT-VrWf40NH-OeumxwKMJ0Gp6bgvyPKZGkx6VK6bT24PsuOEwGDqrV3u1pRClKapQqkts0MFArk41bNSVghWbiTIkg1BjChhBgHxdKO9ujlph44A-Rk9ZKFHpvg-VdTvz8HgVSN4Sr65XB0byBpQMuD_FErGUaRCPGd4zNRRwEhC4r5vOPCn7vE3AcG"/>
+</div>
+<p class="font-headline font-semibold text-sm text-on-surface truncate">Planta Reforma.pdf</p>
+<p class="font-label text-[10px] text-outline uppercase tracking-wider mt-0.5">Ontem, 09:15</p>
+</div>
+<!-- Recent Card 3 -->
+<div class="flex-none w-40 group">
+<div class="aspect-[3/4] bg-surface-container-lowest rounded-xl overflow-hidden mb-3 shadow-sm group-active:scale-95 transition-transform">
+<img class="w-full h-full object-cover opacity-90" data-alt="Handwritten study notes with highlighting and neat diagrams on a clean sheet of paper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNfHsj_eB0JeNN7UkbxCRsr0QJ8iNrfbwrLIbvexxmx_MoBYK3BDbrmGqxVrO_6MEfGfGsWpj9i8a_BDuHFUM7EPdobQ0LeflVqKoREHa-xyrcX4Rpv3EWvXZMrXb1324PQhmZnZrwFxwjXwFsErOfTiAt4hsGf1Qww3ALc5l9B5ZWEMfMv5Rmc0mT85n4vXuOFztQw6qC2wAsq5SdJoVj38KbLidYL6xpk_Ynjc07Tq5jWUslxM1gCWo3iyCAP1cCWTHir7J4Si9Z"/>
+</div>
+<p class="font-headline font-semibold text-sm text-on-surface truncate">Notas de Aula - Bio</p>
+<p class="font-label text-[10px] text-outline uppercase tracking-wider mt-0.5">12 Out, 18:00</p>
+</div>
+</div>
+</section>
+<!-- Favoritos Section (Vertical Editorial Style) -->
+<section>
+<div class="flex justify-between items-end mb-4">
+<h2 class="text-headline-sm font-headline font-bold text-on-surface tracking-tight">Favoritos</h2>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-low p-4 rounded-2xl flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-16 bg-surface-container-lowest rounded-lg flex-none overflow-hidden border border-outline-variant/10">
+<img class="w-full h-full object-cover opacity-75" data-alt="Close-up of a signed legal contract with a pen resting on the side, focused lighting on text" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4InTWU97zgdjE9rBfJzF5leHBSgG_wk0mK15nN_oVSynlEQhp015WDi3HjjB_wCa3sWe9B1LggtJM4wDOslNWFs-cWcKS8eyfDe5agELmEYSxAIzn-UJIjomykNCeAzBfPFY691unXEahVQAkZu4xpILvH5gXDD4VfsgV5rhf1hQmSRLruSUFwiFEcatOH624cptevrrWc7lFJNwkw_Lj5IIGhafFCsB-88quAz8hpxC_Q6dRKYmrPsDy1oDoU7Lf-8mgPAiwr2eL"/>
+</div>
+<div>
+<p class="font-headline font-bold text-sm text-on-surface">Contrato Prestação.pdf</p>
+<p class="font-label text-xs text-outline">1.2 MB • Atualizado há 2 dias</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-16 bg-surface-container-lowest rounded-lg flex-none overflow-hidden border border-outline-variant/10">
+<img class="w-full h-full object-cover opacity-75" data-alt="Elegant product catalog page featuring minimalist jewelry photography and refined text layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA2ew1C1XyzPc-aVpJ5dXgYLQXjOf2Oo4pUV4mK2ok7785s0GEAxyaFXOiXkglb-VDa0Q4nZ7AcwtOEXKDQIIFZ55V_tY_NChfhbHtIkRkqOn0gLOaN_2znrXoHcA-hfFfAeNasBcdcMXzByYDXtn6MoUabUwXx4kl5endiAHd7cXxHeWQKC4PNBTxWCkNCzHUftAAWNiqZI6VCXmFrGsVL3fOJUYUA5gKGX1jw60ywdi1zBGhU2hMklkTUzMQMU71AptxG2ToULI8"/>
+</div>
+<div>
+<p class="font-headline font-bold text-sm text-on-surface">Portfólio 2024.pdf</p>
+<p class="font-label text-xs text-outline">8.5 MB • Atualizado há 1 sem</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button (FAB) -->
+<div class="fixed bottom-28 right-6 z-40">
+<button class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary-container text-white shadow-xl flex items-center justify-center active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 shadow-[0_-4px_20px_0_rgba(0,0,0,0.05)] rounded-t-3xl">
+<a class="flex flex-col items-center justify-center bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-2xl px-5 py-2 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest">Início</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-500 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">description</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest">Arquivos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-500 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">build</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest">Ferramentas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-500 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest">Perfil</span>
+</a>
+</nav>
+<!-- Bottom Sheet Mockup (Quick Actions) - Initially Hidden state implied by structure -->
+<!-- This would normally toggle visibility, here we show it as a conceptual overlay for the design task -->
+<div class="hidden fixed inset-0 bg-on-surface/20 backdrop-blur-sm z-[60] flex items-end">
+<div class="w-full bg-white/90 backdrop-blur-2xl rounded-t-[2rem] p-8 shadow-2xl">
+<div class="w-12 h-1.5 bg-outline-variant/30 rounded-full mx-auto mb-8"></div>
+<h3 class="font-headline font-extrabold text-xl mb-6">Ações Rápidas</h3>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center gap-4 p-4 bg-surface-container-low rounded-2xl active:bg-surface-container-high transition-colors text-left">
+<span class="material-symbols-outlined text-blue-600 bg-blue-50 p-3 rounded-xl">upload_file</span>
+<span class="font-headline font-semibold text-sm">Abrir Arquivo</span>
+</button>
+<button class="flex items-center gap-4 p-4 bg-surface-container-low rounded-2xl active:bg-surface-container-high transition-colors text-left">
+<span class="material-symbols-outlined text-blue-600 bg-blue-50 p-3 rounded-xl">picture_as_pdf</span>
+<span class="font-headline font-semibold text-sm">Criar PDF</span>
+</button>
+<button class="flex items-center gap-4 p-4 bg-surface-container-low rounded-2xl active:bg-surface-container-high transition-colors text-left">
+<span class="material-symbols-outlined text-blue-600 bg-blue-50 p-3 rounded-xl">document_scanner</span>
+<span class="font-headline font-semibold text-sm">Escanear</span>
+</button>
+<button class="flex items-center gap-4 p-4 bg-surface-container-low rounded-2xl active:bg-surface-container-high transition-colors text-left">
+<span class="material-symbols-outlined text-blue-600 bg-blue-50 p-3 rounded-xl">cloud_download</span>
+<span class="font-headline font-semibold text-sm">Nuvem</span>
+</button>
+</div>
+<button class="w-full mt-8 py-4 bg-surface-container-highest rounded-xl font-headline font-bold text-on-surface-variant uppercase tracking-widest text-xs">Cancelar</button>
+</div>
+</div>
+</body></html>
