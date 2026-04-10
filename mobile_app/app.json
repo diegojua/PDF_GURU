@@ -41,8 +41,9 @@
     ],
     "extra": {
       "eas": {
-        "projectId": ""
+        "projectId": "b939997f-034e-44ed-8053-b049a98ef9ae"
       }
-    }
+    },
+    "owner": "diegojua"
   }
 }

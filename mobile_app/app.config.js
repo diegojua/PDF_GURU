@@ -11,7 +11,7 @@ export default ({ config }) => {
       // Example: API_BASE_URL=https://api.pdfguru.com
       API_BASE_URL: process.env.API_BASE_URL ?? 'http://localhost:3000',
       eas: {
-        projectId: config.extra?.eas?.projectId ?? '',
+        projectId: process.env.EAS_PROJECT_ID ?? config.extra?.eas?.projectId ?? '',
       },
     },
   };

@@ -23,13 +23,26 @@ Este projeto é uma implementação inicial de um app mobile multiplataforma (An
    ```
 3. Configure o backend Supabase:
    - copie `mobile_app/.env.example` para `mobile_app/.env`
-   - preencha `SUPABASE_URL` e `SUPABASE_ANON_KEY` no arquivo `.env`
+   - preencha `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `API_BASE_URL` e `EAS_PROJECT_ID` no arquivo `.env`
    - execute `npm install` em `mobile_app` para carregar `dotenv`
    - crie o banco usando os arquivos em `supabase/schema.sql` e `supabase/seed.sql`
    - execute `supabase/seedUsers.js` usando o `SUPABASE_SERVICE_ROLE_KEY`
    - reinicie o Expo para carregar a configuração de chaves
 
 4. Rode no Android ou iOS via Expo.
+
+## Gerar APK (EAS)
+
+1. Instale e autentique no EAS CLI:
+   - `npm install -g eas-cli`
+   - `eas login`
+2. Vincule o projeto uma vez (se necessario):
+   - `cd mobile_app`
+   - `eas init`
+3. Gere APK de preview:
+   - `npm run apk:preview`
+4. Gere APK de development:
+   - `npm run apk:development`
 
 ## Credenciais de teste locais
 
