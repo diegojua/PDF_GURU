@@ -57,16 +57,16 @@ export const HomeScreen = () => {
     }
   }, [selectedTenant]);
 
-  useEffect(() => { loadDocuments(); }, [loadDocuments]);
+  useEffect(() => {
+    loadDocuments();
+  }, [loadDocuments]);
 
   const filteredDocuments = useMemo(
     () =>
       searchQuery.trim()
-        ? documents.filter((d) =>
-            d.title.toLowerCase().includes(searchQuery.toLowerCase())
-          )
+        ? documents.filter((d) => d.title.toLowerCase().includes(searchQuery.toLowerCase()))
         : documents,
-    [documents, searchQuery]
+    [documents, searchQuery],
   );
 
   const recentDocuments = useMemo(() => filteredDocuments.slice(0, 4), [filteredDocuments]);
@@ -85,25 +85,12 @@ export const HomeScreen = () => {
     }
   };
 
-  const navigateToPdf = useCallback((doc: DocumentItem) => {
-    navigation.navigate('PdfViewer', { documentId: doc.id, documentTitle: doc.title });
-  }, [navigation]);
-
-  const renderDocumentItem = useCallback(({ item }: { item: DocumentItem }) => (
-    <TouchableOpacity
-      style={styles.favoriteCard}
-      onPress={() => navigateToPdf(item)}
-    >
-      <View style={styles.favoriteCardLeft}>
-        <Text style={styles.docIcon}>{getCategoryIcon(item.title)}</Text>
-        <View style={styles.favoriteCardText}>
-          <Text style={styles.favoriteTitle} numberOfLines={1}>{item.title}</Text>
-          <Text style={styles.favoriteMeta}>Atualizado em {item.modifiedAt}</Text>
-        </View>
-      </View>
-      <Text style={styles.chevron}>â€º</Text>
-    </TouchableOpacity>
-  ), [navigateToPdf]);
+  const navigateToPdf = useCallback(
+    (doc: DocumentItem) => {
+      navigation.navigate('PdfViewer', { documentId: doc.id, documentTitle: doc.title });
+    },
+    [navigation],
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -117,10 +104,11 @@ export const HomeScreen = () => {
           onPress={handleUpload}
           disabled={uploading}
         >
-          {uploading
-            ? <ActivityIndicator size="small" color="#fff" />
-            : <Text style={styles.uploadButtonText}>+ Enviar</Text>
-          }
+          {uploading ? (
+            <ActivityIndicator size="small" color="#fff" />
+          ) : (
+            <Text style={styles.uploadButtonText}>+ Enviar</Text>
+          )}
         </TouchableOpacity>
       </View>
 
@@ -164,7 +152,9 @@ export const HomeScreen = () => {
                   <View style={[styles.recentImage, { backgroundColor: `${themeColor}22` }]}>
                     <Text style={styles.recentDocIcon}>{getCategoryIcon(doc.title)}</Text>
                   </View>
-                  <Text style={styles.recentTitle} numberOfLines={2}>{doc.title}</Text>
+                  <Text style={styles.recentTitle} numberOfLines={2}>
+                    {doc.title}
+                  </Text>
                   <Text style={styles.recentMeta}>{doc.modifiedAt}</Text>
                 </TouchableOpacity>
               ))}
@@ -200,7 +190,9 @@ export const HomeScreen = () => {
                 <View style={styles.favoriteCardLeft}>
                   <Text style={styles.docIcon}>{getCategoryIcon(doc.title)}</Text>
                   <View style={styles.favoriteCardText}>
-                    <Text style={styles.favoriteTitle} numberOfLines={1}>{doc.title}</Text>
+                    <Text style={styles.favoriteTitle} numberOfLines={1}>
+                      {doc.title}
+                    </Text>
                     <Text style={styles.favoriteMeta}>Atualizado em {doc.modifiedAt}</Text>
                   </View>
                 </View>

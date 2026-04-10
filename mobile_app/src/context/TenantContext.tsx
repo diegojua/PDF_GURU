@@ -2,7 +2,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useS
 import Constants from 'expo-constants';
 import { Tenant } from '../types/tenant';
 import { SecureStorage } from '../services/secureStorage';
-import { AuthService, LoginResponse } from '../services/authService';
+import { AuthService } from '../services/authService';
 
 const apiBaseUrl: string =
   (Constants.expoConfig?.extra?.API_BASE_URL as string | undefined) ?? 'http://localhost:3000';
@@ -142,7 +142,7 @@ export const TenantProvider: React.FC<React.PropsWithChildren> = ({ children }) 
       logout,
       isLoading,
     }),
-    [selectedTenant, authToken, refreshToken, isLoading]
+    [selectedTenant, authToken, refreshToken, isLoading],
   );
 
   return <TenantContext.Provider value={value}>{children}</TenantContext.Provider>;

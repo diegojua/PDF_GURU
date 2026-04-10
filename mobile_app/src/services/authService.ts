@@ -1,5 +1,6 @@
 import { Platform } from 'react-native';
 import { Tenant } from '../types/tenant';
+import { normalizeLocalhostForAndroid } from '../utils/network';
 
 export interface LoginResponse {
   token: string;
@@ -8,10 +9,7 @@ export interface LoginResponse {
 }
 
 const normalizeUrl = (url: string): string => {
-  if (Platform.OS === 'android' && url.includes('localhost')) {
-    return url.replace('localhost', '10.0.2.2');
-  }
-  return url;
+  return normalizeLocalhostForAndroid(url, Platform.OS);
 };
 
 export class AuthService {
@@ -60,4 +58,3 @@ export class AuthService {
     }
   }
 }
-

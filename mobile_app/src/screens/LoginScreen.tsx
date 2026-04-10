@@ -21,7 +21,9 @@ export const LoginScreen = () => {
       <View style={styles.header}>
         <Text style={styles.title}>Entrar em</Text>
         <Text style={styles.tenantName}>{selectedTenant?.name}</Text>
-        <Text style={styles.subtitle}>Autenticação segura por tenant com armazenamento protegido.</Text>
+        <Text style={styles.subtitle}>
+          Autenticação segura por tenant com armazenamento protegido.
+        </Text>
       </View>
 
       <View style={styles.form}>
@@ -61,8 +63,31 @@ const styles = StyleSheet.create({
   tenantName: { fontSize: 28, fontWeight: '800', color: '#005bbf', marginTop: 2 },
   subtitle: { marginTop: 12, fontSize: 15, color: '#64748b', lineHeight: 22 },
   form: { marginTop: 20 },
-  input: { backgroundColor: '#ffffff', borderRadius: 18, padding: 16, fontSize: 16, color: '#0f172a', marginBottom: 14, shadowColor: '#000', shadowOpacity: 0.04, shadowRadius: 14, shadowOffset: { width: 0, height: 10 }, elevation: 2 },
-  button: { backgroundColor: '#005bbf', borderRadius: 18, paddingVertical: 16, alignItems: 'center', marginTop: 8, shadowColor: '#000', shadowOpacity: 0.08, shadowRadius: 18, shadowOffset: { width: 0, height: 10 }, elevation: 3 },
+  input: {
+    backgroundColor: '#ffffff',
+    borderRadius: 18,
+    padding: 16,
+    fontSize: 16,
+    color: '#0f172a',
+    marginBottom: 14,
+    shadowColor: '#000',
+    shadowOpacity: 0.04,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 10 },
+    elevation: 2,
+  },
+  button: {
+    backgroundColor: '#005bbf',
+    borderRadius: 18,
+    paddingVertical: 16,
+    alignItems: 'center',
+    marginTop: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 18,
+    shadowOffset: { width: 0, height: 10 },
+    elevation: 3,
+  },
   buttonText: { color: '#ffffff', fontSize: 16, fontWeight: '700' },
   logoutButton: { marginTop: 18, alignItems: 'center' },
   logoutText: { color: '#64748b', fontSize: 14, fontWeight: '700' },

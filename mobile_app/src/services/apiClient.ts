@@ -1,19 +1,17 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig } from 'axios';
 import { Platform } from 'react-native';
 import { Tenant } from '../types/tenant';
+import { normalizeLocalhostForAndroid } from '../utils/network';
 
 const normalizeBaseUrl = (baseUrl: string) => {
-  if (Platform.OS === 'android' && baseUrl.includes('localhost')) {
-    return baseUrl.replace('localhost', '10.0.2.2');
-  }
-  return baseUrl;
+  return normalizeLocalhostForAndroid(baseUrl, Platform.OS);
 };
 
 export const createApiClient = (
   tenant: Tenant,
   token: string | null,
   refreshToken: string | null,
-  refreshTokenCallback?: () => Promise<string | null>
+  refreshTokenCallback?: () => Promise<string | null>,
 ): AxiosInstance => {
   const client = axios.create({
     baseURL: normalizeBaseUrl(tenant.apiBaseUrl),
@@ -55,7 +53,7 @@ export const createApiClient = (
 
       console.error('[API CLIENT] response error', error.message);
       return Promise.reject(error as Error);
-    }
+    },
   );
 
   return client;

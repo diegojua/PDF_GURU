@@ -14,7 +14,10 @@ import { useTenantContext } from '../context/TenantContext';
 import { PdfService } from '../services/pdfService';
 import { RootStackParamList } from '../navigation/AppNavigator';
 
-type PdfViewerRouteProp = RouteProp<{ PdfViewer: { documentId: string; documentTitle?: string } }, 'PdfViewer'>;
+type PdfViewerRouteProp = RouteProp<
+  { PdfViewer: { documentId: string; documentTitle?: string } },
+  'PdfViewer'
+>;
 
 export const PdfViewerScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList, 'PdfViewer'>>();
@@ -49,19 +52,24 @@ export const PdfViewerScreen = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.topBar}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Text style={styles.backText}>â†</Text>
+          <Text style={styles.backText}>{'<-'}</Text>
         </TouchableOpacity>
-        <Text style={styles.topTitle} numberOfLines={1}>{documentTitle}</Text>
+        <Text style={styles.topTitle} numberOfLines={1}>
+          {documentTitle}
+        </Text>
         <View style={styles.spacer} />
       </View>
 
       {error ? (
         <View style={styles.errorContainer}>
-          <Text style={styles.errorIcon}>âš ï¸</Text>
+          <Text style={styles.errorIcon}>!</Text>
           <Text style={styles.errorText}>{error}</Text>
           <TouchableOpacity
             style={[styles.retryButton, { backgroundColor: themeColor }]}
-            onPress={() => { setError(null); setRetryCount(c => c + 1); }}
+            onPress={() => {
+              setError(null);
+              setRetryCount((c) => c + 1);
+            }}
           >
             <Text style={styles.retryText}>Tentar novamente</Text>
           </TouchableOpacity>

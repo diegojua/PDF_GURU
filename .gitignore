@@ -17,3 +17,6 @@ Thumbs.db
 
 # Node
 node_modules/
+
+# Test artifacts
+backend/coverage/

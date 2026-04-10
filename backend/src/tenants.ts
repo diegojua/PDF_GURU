@@ -34,8 +34,18 @@ export const tenants: TenantDefinition[] = [
     id: 'tenant-alpha',
     name: 'PDF Guru Corporate',
     users: [
-      { email: 'admin@alpha.com', password: e.TENANT_ALPHA_USER1_PASSWORD ?? '', name: 'Alice Alpha', userId: uuidv4() },
-      { email: 'user@alpha.com', password: e.TENANT_ALPHA_USER2_PASSWORD ?? '', name: 'Victor Alpha', userId: uuidv4() },
+      {
+        email: 'admin@alpha.com',
+        password: e.TENANT_ALPHA_USER1_PASSWORD ?? '',
+        name: 'Alice Alpha',
+        userId: uuidv4(),
+      },
+      {
+        email: 'user@alpha.com',
+        password: e.TENANT_ALPHA_USER2_PASSWORD ?? '',
+        name: 'Victor Alpha',
+        userId: uuidv4(),
+      },
     ],
     documents: [
       { id: 'doc-1', title: 'Contrato Prestação.pdf', modifiedAt: '2026-03-30' },
@@ -46,8 +56,18 @@ export const tenants: TenantDefinition[] = [
     id: 'tenant-bravo',
     name: 'PDF Guru Finance',
     users: [
-      { email: 'admin@bravo.com', password: e.TENANT_BRAVO_USER1_PASSWORD ?? '', name: 'Bruno Bravo', userId: uuidv4() },
-      { email: 'user@bravo.com', password: e.TENANT_BRAVO_USER2_PASSWORD ?? '', name: 'Valeria Bravo', userId: uuidv4() },
+      {
+        email: 'admin@bravo.com',
+        password: e.TENANT_BRAVO_USER1_PASSWORD ?? '',
+        name: 'Bruno Bravo',
+        userId: uuidv4(),
+      },
+      {
+        email: 'user@bravo.com',
+        password: e.TENANT_BRAVO_USER2_PASSWORD ?? '',
+        name: 'Valeria Bravo',
+        userId: uuidv4(),
+      },
     ],
     documents: [
       { id: 'doc-3', title: 'Relatório de Auditoria.pdf', modifiedAt: '2026-03-28' },
@@ -57,4 +77,5 @@ export const tenants: TenantDefinition[] = [
 ];
 
 export const jwtSecret: string = process.env.JWT_SECRET;
-export const tokenExpiration = (process.env.TOKEN_EXPIRATION ?? '1h') as import('jsonwebtoken').SignOptions['expiresIn'];
+export const tokenExpiration = (process.env.TOKEN_EXPIRATION ??
+  '1h') as import('jsonwebtoken').SignOptions['expiresIn'];

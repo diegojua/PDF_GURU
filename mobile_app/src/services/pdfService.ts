@@ -44,14 +44,11 @@ export class PdfService {
       return '';
     }
 
-    const { data: signedUrlData, error: signedUrlError } = await supabase
-      .storage
+    const { data: signedUrlData, error: signedUrlError } = await supabase.storage
       .from('documents')
       .createSignedUrl((data as SupabaseDocumentRow).storage_path!, 300);
 
-    return signedUrlError || !signedUrlData?.signedUrl
-      ? ''
-      : signedUrlData.signedUrl;
+    return signedUrlError || !signedUrlData?.signedUrl ? '' : signedUrlData.signedUrl;
   }
 
   async uploadDocument(): Promise<UploadResult> {
