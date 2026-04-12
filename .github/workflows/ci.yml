@@ -71,3 +71,33 @@ jobs:
 
       - name: Test
         run: npm run test
+
+  mobile-native-sanity:
+    name: Mobile Native Sanity
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile_app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: mobile_app/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Expo Doctor
+        run: npx expo-doctor
+
+      - name: Fail on UTF-8 BOM in Android native sources
+        run: |
+          if grep -RIl $'\xEF\xBB\xBF' android/app/src/main android/app/src/release --include='*.java' --include='*.kt'; then
+            echo "UTF-8 BOM found in Android native source files. Remove BOM to avoid javac/kotlinc failures."
+            exit 1
+          fi
