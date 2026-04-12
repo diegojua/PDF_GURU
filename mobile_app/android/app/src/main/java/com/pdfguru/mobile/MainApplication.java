@@ -1,4 +1,4 @@
-﻿package com.pdfguru.mobile;
+package com.pdfguru.mobile;
 
 import android.app.Application;
 import android.content.res.Configuration;

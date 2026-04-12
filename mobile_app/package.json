@@ -68,5 +68,12 @@
   "overrides": {
     "tar": ">=7.5.11",
     "@xmldom/xmldom": ">=0.8.12"
+  },
+  "expo": {
+    "doctor": {
+      "appConfigFieldsNotSyncedCheck": {
+        "enabled": false
+      }
+    }
   }
 }
