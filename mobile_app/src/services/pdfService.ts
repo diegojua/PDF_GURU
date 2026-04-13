@@ -1,6 +1,6 @@
 import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system';
-import { supabase } from './supabaseClient';
+import { isSupabaseConfigured, supabase } from './supabaseClient';
 import { DocumentItem, UploadResult } from '../types/document';
 
 type SupabaseDocumentRow = {
@@ -15,6 +15,10 @@ export class PdfService {
   constructor(private tenantId?: string) {}
 
   async listDocuments(tenantId: string): Promise<DocumentItem[]> {
+    if (!isSupabaseConfigured) {
+      throw new Error('Supabase não configurado no build.');
+    }
+
     const { data, error } = await supabase
       .from('documents')
       .select('id, title, modified_at, storage_path')
@@ -34,6 +38,10 @@ export class PdfService {
   }
 
   async getDocumentUrl(documentId: string): Promise<string> {
+    if (!isSupabaseConfigured) {
+      return '';
+    }
+
     const { data, error } = await supabase
       .from('documents')
       .select('id, storage_path')
@@ -52,6 +60,10 @@ export class PdfService {
   }
 
   async uploadDocument(): Promise<UploadResult> {
+    if (!isSupabaseConfigured) {
+      return { success: false, message: 'Supabase não configurado no build.' };
+    }
+
     if (!this.tenantId) {
       return { success: false, message: 'Tenant não selecionado.' };
     }

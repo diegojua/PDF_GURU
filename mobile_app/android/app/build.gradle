@@ -23,6 +23,9 @@ react {
     // works correctly with Expo projects.
     cliFile = new File(["node", "--print", "require.resolve('@expo/cli')"].execute(null, rootDir).text.trim())
     bundleCommand = "export:embed"
+
+    // Required in RN 0.76 to wire native autolinked dependencies into :app.
+    autolinkLibrariesWithApp()
 }
 
 /**

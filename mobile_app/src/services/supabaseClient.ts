@@ -12,15 +12,21 @@ const expoExtra = Constants.expoConfig?.extra as
 const SUPABASE_URL = expoExtra?.SUPABASE_URL;
 const SUPABASE_ANON_KEY = expoExtra?.SUPABASE_ANON_KEY;
 
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  throw new Error(
-    'Supabase public keys are not configured. Update mobile_app/.env and restart Expo.',
+export const isSupabaseConfigured = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
+
+if (!isSupabaseConfigured) {
+  console.error(
+    '[SUPABASE] Missing SUPABASE_URL or SUPABASE_ANON_KEY in Expo extra config. Mobile features that depend on Supabase will be unavailable.',
   );
 }
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-  auth: {
-    autoRefreshToken: true,
-    persistSession: false,
+export const supabase = createClient(
+  SUPABASE_URL ?? 'https://example.supabase.co',
+  SUPABASE_ANON_KEY ?? 'missing-anon-key',
+  {
+    auth: {
+      autoRefreshToken: true,
+      persistSession: false,
+    },
   },
-});
+);

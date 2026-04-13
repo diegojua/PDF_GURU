@@ -4,13 +4,13 @@ buildscript {
     ext {
         buildToolsVersion = findProperty('android.buildToolsVersion') ?: '34.0.0'
         minSdkVersion = Integer.parseInt(findProperty('android.minSdkVersion') ?: '24')
-        compileSdkVersion = Integer.parseInt(findProperty('android.compileSdkVersion') ?: '34')
+        compileSdkVersion = Integer.parseInt(findProperty('android.compileSdkVersion') ?: '35')
         targetSdkVersion = Integer.parseInt(findProperty('android.targetSdkVersion') ?: '34')
-        kotlinVersion = '1.8.22'
+        kotlinVersion = '1.9.25'
         frescoVersion = findProperty('expo.frescoVersion') ?: '2.5.0'
 
-        // We use NDK 23 which has both M1 support and is the side-by-side NDK version from AGP.
-        ndkVersion = "23.1.7779620"
+        // RN 0.76 / Expo SDK 52 requires newer libc++ support for C++20 concepts.
+        ndkVersion = "26.1.10909125"
     }
     repositories {
         google()
