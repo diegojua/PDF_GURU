@@ -4,6 +4,7 @@ backend/.env
 supabase/.env
 mobile_app/android/keystore.properties
 mobile_app/android/app/release.keystore
+mobile_app/google-play-key.json
 
 # OS
 .DS_Store

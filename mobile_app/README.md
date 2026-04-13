@@ -44,6 +44,19 @@ Este projeto é uma implementação inicial de um app mobile multiplataforma (An
 4. Gere APK de development:
    - `npm run apk:development`
 
+## Publicar Android (Google Play)
+
+1. Garanta que a API de producao esteja correta no `mobile_app/.env`:
+   - `API_BASE_URL=https://api.seu-dominio.com`
+2. Coloque a chave da service account do Google Play em:
+   - `mobile_app/google-play-key.json`
+3. Gere o bundle de producao (AAB):
+   - `npm run aab:production`
+4. Envie para a Play Store (track production):
+   - `npm run submit:production`
+5. Opcional (build + submit em sequencia):
+   - `npm run publish:android`
+
 ## Credenciais de teste locais
 
 - tenant-alpha: `admin@alpha.com` / `Alpha123!`

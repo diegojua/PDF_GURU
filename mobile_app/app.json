@@ -2,7 +2,7 @@
   "expo": {
     "name": "PDF Guru",
     "slug": "pdf-guru-mobile",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "platforms": ["ios", "android", "web"],
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
@@ -16,11 +16,11 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.pdfguru.mobile",
-      "buildNumber": "1"
+      "buildNumber": "3"
     },
     "android": {
       "package": "com.pdfguru.mobile",
-      "versionCode": 1,
+      "versionCode": 3,
       "permissions": ["android.permission.INTERNET", "android.permission.VIBRATE"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
