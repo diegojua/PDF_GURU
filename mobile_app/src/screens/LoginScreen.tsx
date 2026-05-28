@@ -7,6 +7,7 @@ export const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const themeColor = selectedTenant?.themeColor ?? '#005bbf';
 
   const handleLogin = async () => {
     if (!selectedTenant) return;
@@ -20,7 +21,7 @@ export const LoginScreen = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Entrar em</Text>
-        <Text style={styles.tenantName}>{selectedTenant?.name}</Text>
+        <Text style={[styles.tenantName, { color: themeColor }]}>{selectedTenant?.name}</Text>
         <Text style={styles.subtitle}>
           Autenticação segura por tenant com armazenamento protegido.
         </Text>
@@ -45,7 +46,7 @@ export const LoginScreen = () => {
           onChangeText={setPassword}
         />
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <TouchableOpacity style={[styles.button, { backgroundColor: themeColor }]} onPress={handleLogin}>
           <Text style={styles.buttonText}>Continuar</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.logoutButton} onPress={logout}>
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f8fafb', paddingHorizontal: 24 },
   header: { marginTop: 40, marginBottom: 36 },
   title: { fontSize: 28, fontWeight: '800', color: '#0f172a' },
-  tenantName: { fontSize: 28, fontWeight: '800', color: '#005bbf', marginTop: 2 },
+  tenantName: { fontSize: 28, fontWeight: '800', marginTop: 2 },
   subtitle: { marginTop: 12, fontSize: 15, color: '#64748b', lineHeight: 22 },
   form: { marginTop: 20 },
   input: {
@@ -77,7 +78,6 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   button: {
-    backgroundColor: '#005bbf',
     borderRadius: 18,
     paddingVertical: 16,
     alignItems: 'center',

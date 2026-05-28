@@ -18,12 +18,12 @@ import { RootStackParamList } from '../navigation/AppNavigator';
 import { DocumentItem } from '../types/document';
 
 const CATEGORY_ICONS: Record<string, string> = {
-  contrato: 'ðŸ“„',
-  relat: 'ðŸ“Š',
-  proposta: 'ðŸ“‹',
-  fiscal: 'ðŸ¦',
-  financ: 'ðŸ’°',
-  default: 'ðŸ“',
+  contrato: '📄',
+  relat: '📊',
+  proposta: '📋',
+  fiscal: '🏛️',
+  financ: '💰',
+  default: '📁',
 };
 
 const getCategoryIcon = (title: string) => {
@@ -114,7 +114,7 @@ export const HomeScreen = () => {
 
       {/* Busca */}
       <View style={styles.searchBox}>
-        <Text style={styles.searchIcon}>ðŸ”</Text>
+        <Text style={styles.searchIcon}>🔍</Text>
         <TextInput
           style={styles.searchInput}
           placeholder="Pesquisar documentos..."
@@ -126,7 +126,7 @@ export const HomeScreen = () => {
         />
         {searchQuery.length > 0 && (
           <TouchableOpacity onPress={() => setSearchQuery('')}>
-            <Text style={styles.clearIcon}>âœ•</Text>
+            <Text style={styles.clearIcon}>✖</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -174,9 +174,9 @@ export const HomeScreen = () => {
           <ActivityIndicator style={styles.loader} size="large" color={themeColor} />
         ) : filteredDocuments.length === 0 ? (
           <View style={styles.emptyState}>
-            <Text style={styles.emptyIcon}>ðŸ“­</Text>
+            <Text style={styles.emptyIcon}>📥</Text>
             <Text style={styles.emptyText}>
-              {searchQuery ? 'Nenhum documento encontrado.' : 'Nenhum documento disponÃ­vel.'}
+              {searchQuery ? 'Nenhum documento encontrado.' : 'Nenhum documento disponível.'}
             </Text>
           </View>
         ) : (
@@ -196,7 +196,7 @@ export const HomeScreen = () => {
                     <Text style={styles.favoriteMeta}>Atualizado em {doc.modifiedAt}</Text>
                   </View>
                 </View>
-                <Text style={styles.chevron}>â€º</Text>
+                <Text style={styles.chevron}>›</Text>
               </TouchableOpacity>
             ))}
           </View>

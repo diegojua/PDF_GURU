@@ -1,6 +1,5 @@
-import { Platform } from 'react-native';
 import { Tenant } from '../types/tenant';
-import { normalizeLocalhostForAndroid } from '../utils/network';
+import { supabase } from './supabaseClient';
 
 export interface LoginResponse {
   token: string;
@@ -8,51 +7,71 @@ export interface LoginResponse {
   user: { email: string; name: string };
 }
 
-const normalizeUrl = (url: string): string => {
-  return normalizeLocalhostForAndroid(url, Platform.OS);
-};
+export interface RefreshResponse {
+  token: string;
+  refreshToken: string;
+}
 
 export class AuthService {
-  constructor(private tenant: Tenant) {}
+  constructor(private tenant?: Tenant) {}
 
   async login(email: string, password: string): Promise<LoginResponse | null> {
     try {
-      const response = await fetch(`${normalizeUrl(this.tenant.apiBaseUrl)}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Tenant-ID': this.tenant.id,
-        },
-        body: JSON.stringify({ email, password }),
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
       });
 
-      if (!response.ok) {
+      if (error || !data.session || !data.user) {
         return null;
       }
 
-      return (await response.json()) as LoginResponse;
+      let profileFullName = '';
+
+      // Validação de Tenant: Verifica se o perfil do usuário corresponde ao tenant selecionado
+      if (this.tenant) {
+        const { data: profile, error: profileError } = await supabase
+          .from('profiles')
+          .select('tenant_id, full_name')
+          .eq('id', data.user.id)
+          .single();
+
+        if (profileError || !profile || profile.tenant_id !== this.tenant.id) {
+          // Tentativa de login no tenant incorreto. Deslogar por segurança.
+          await supabase.auth.signOut();
+          return null;
+        }
+
+        profileFullName = profile.full_name ?? '';
+      }
+
+      return {
+        token: data.session.access_token,
+        refreshToken: data.session.refresh_token,
+        user: {
+          email: data.user.email ?? '',
+          name: profileFullName || ((data.user.user_metadata?.full_name as string) ?? ''),
+        },
+      };
     } catch {
       return null;
     }
   }
 
-  async refreshToken(currentRefreshToken: string): Promise<string | null> {
+  async refreshToken(currentRefreshToken: string): Promise<RefreshResponse | null> {
     try {
-      const response = await fetch(`${normalizeUrl(this.tenant.apiBaseUrl)}/auth/refresh`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Tenant-ID': this.tenant.id,
-        },
-        body: JSON.stringify({ refreshToken: currentRefreshToken }),
+      const { data, error } = await supabase.auth.refreshSession({
+        refresh_token: currentRefreshToken,
       });
 
-      if (!response.ok) {
+      if (error || !data.session) {
         return null;
       }
 
-      const data = await response.json();
-      return (data.token as string) ?? null;
+      return {
+        token: data.session.access_token,
+        refreshToken: data.session.refresh_token,
+      };
     } catch {
       return null;
     }

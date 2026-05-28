@@ -12,7 +12,6 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "isolatedModules": true,
-    "ignoreDeprecations": "6.0",
     "types": ["react", "react-native"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],

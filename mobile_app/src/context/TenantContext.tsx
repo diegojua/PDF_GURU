@@ -3,6 +3,7 @@ import Constants from 'expo-constants';
 import { Tenant } from '../types/tenant';
 import { SecureStorage } from '../services/secureStorage';
 import { AuthService } from '../services/authService';
+import { supabase } from '../services/supabaseClient';
 
 const apiBaseUrl: string =
   (Constants.expoConfig?.extra?.API_BASE_URL as string | undefined) ?? 'http://localhost:3000';
@@ -42,23 +43,54 @@ export const TenantProvider: React.FC<React.PropsWithChildren> = ({ children }) 
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const refreshAuthToken = useCallback(async (): Promise<string | null> => {
-    if (!selectedTenant || !refreshToken) {
-      return null;
+  const clearAuthSession = useCallback(async (tenant: Tenant | null): Promise<void> => {
+    if (tenant) {
+      await SecureStorage.deleteItem('token', tenant.id);
+      await SecureStorage.deleteItem('refreshToken', tenant.id);
     }
 
-    const authService = new AuthService(selectedTenant);
-    const newToken = await authService.refreshToken(refreshToken);
+    await SecureStorage.deleteSelectedTenantId();
+    setSelectedTenantState(null);
+    setAuthToken(null);
+    setRefreshToken(null);
 
-    if (!newToken) {
-      await logout();
-      return null;
-    }
+    // Sincroniza logout no cliente Supabase
+    await supabase.auth.signOut();
+  }, []);
 
-    await SecureStorage.setItem('token', newToken, selectedTenant.id);
-    setAuthToken(newToken);
-    return newToken;
-  }, [selectedTenant, refreshToken]);
+  const logout = async (): Promise<void> => {
+    await clearAuthSession(selectedTenant);
+  };
+
+  const refreshAuthToken = useCallback(
+    async (tenant: Tenant | null, currentRefreshToken: string | null): Promise<string | null> => {
+      if (!tenant || !currentRefreshToken) {
+        return null;
+      }
+
+      const authService = new AuthService(tenant);
+      const refreshedSession = await authService.refreshToken(currentRefreshToken);
+
+      if (!refreshedSession) {
+        await clearAuthSession(tenant);
+        return null;
+      }
+
+      await SecureStorage.setItem('token', refreshedSession.token, tenant.id);
+      await SecureStorage.setItem('refreshToken', refreshedSession.refreshToken, tenant.id);
+      setAuthToken(refreshedSession.token);
+      setRefreshToken(refreshedSession.refreshToken);
+
+      // Atualiza a sessão ativa no cliente Supabase
+      await supabase.auth.setSession({
+        access_token: refreshedSession.token,
+        refresh_token: refreshedSession.refreshToken,
+      });
+
+      return refreshedSession.token;
+    },
+    [clearAuthSession],
+  );
 
   useEffect(() => {
     const initialize = async () => {
@@ -73,7 +105,13 @@ export const TenantProvider: React.FC<React.PropsWithChildren> = ({ children }) 
           setRefreshToken(savedRefreshToken);
 
           if (!savedToken && savedRefreshToken) {
-            await refreshAuthToken();
+            await refreshAuthToken(tenant, savedRefreshToken);
+          } else if (savedToken && savedRefreshToken) {
+            // Inicializa a sessão ativa no cliente Supabase
+            await supabase.auth.setSession({
+              access_token: savedToken,
+              refresh_token: savedRefreshToken,
+            });
           }
         }
       }
@@ -81,7 +119,7 @@ export const TenantProvider: React.FC<React.PropsWithChildren> = ({ children }) 
     };
 
     initialize();
-  }, []);
+  }, [refreshAuthToken]);
 
   const login = async (email: string, password: string): Promise<boolean> => {
     if (!selectedTenant) {
@@ -99,18 +137,14 @@ export const TenantProvider: React.FC<React.PropsWithChildren> = ({ children }) 
     await SecureStorage.setItem('refreshToken', loginResponse.refreshToken, selectedTenant.id);
     setAuthToken(loginResponse.token);
     setRefreshToken(loginResponse.refreshToken);
+
+    // Define a sessão ativa no cliente Supabase
+    await supabase.auth.setSession({
+      access_token: loginResponse.token,
+      refresh_token: loginResponse.refreshToken,
+    });
+
     return true;
-  };
-
-  const logout = async (): Promise<void> => {
-    if (!selectedTenant) return;
-
-    await SecureStorage.deleteItem('token', selectedTenant.id);
-    await SecureStorage.deleteItem('refreshToken', selectedTenant.id);
-    await SecureStorage.deleteSelectedTenantId();
-    setSelectedTenantState(null);
-    setAuthToken(null);
-    setRefreshToken(null);
   };
 
   const setSelectedTenant = async (tenant: Tenant | null) => {
@@ -123,12 +157,16 @@ export const TenantProvider: React.FC<React.PropsWithChildren> = ({ children }) 
       setRefreshToken(refresh);
 
       if (!token && refresh) {
-        await refreshAuthToken();
+        await refreshAuthToken(tenant, refresh);
+      } else if (token && refresh) {
+        // Restaura a sessão ativa no cliente Supabase para o tenant selecionado
+        await supabase.auth.setSession({
+          access_token: token,
+          refresh_token: refresh,
+        });
       }
     } else {
-      await SecureStorage.deleteSelectedTenantId();
-      setAuthToken(null);
-      setRefreshToken(null);
+      await clearAuthSession(selectedTenant);
     }
   };
 

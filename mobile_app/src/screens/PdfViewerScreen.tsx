@@ -39,7 +39,7 @@ export const PdfViewerScreen = () => {
       const pdfService = new PdfService();
       const url = await pdfService.getDocumentUrl(route.params.documentId);
       if (!url) {
-        setError('NÃ£o foi possÃ­vel carregar o documento. Verifique sua conexÃ£o.');
+        setError('Não foi possível carregar o documento. Verifique sua conexão.');
         setLoading(false);
         return;
       }
@@ -79,7 +79,7 @@ export const PdfViewerScreen = () => {
           {loading && (
             <View style={styles.loadingOverlay}>
               <ActivityIndicator size="large" color={themeColor} />
-              <Text style={styles.loadingText}>Carregando documentoâ€¦</Text>
+              <Text style={styles.loadingText}>Carregando documento...</Text>
             </View>
           )}
           <WebView
@@ -96,7 +96,7 @@ export const PdfViewerScreen = () => {
       ) : (
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={themeColor} />
-          <Text style={styles.loadingText}>Obtendo documento seguroâ€¦</Text>
+          <Text style={styles.loadingText}>Obtendo documento seguro...</Text>
         </View>
       )}
     </SafeAreaView>

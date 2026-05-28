@@ -3,6 +3,13 @@ import { describe, expect, it } from 'vitest';
 import { app } from './app';
 
 describe('backend auth and documents', () => {
+  it('returns health status', async () => {
+    const response = await request(app).get('/health');
+
+    expect(response.status).toBe(200);
+    expect(response.body.status).toBe('ok');
+  });
+
   it('returns token for valid login', async () => {
     const response = await request(app)
       .post('/auth/login')

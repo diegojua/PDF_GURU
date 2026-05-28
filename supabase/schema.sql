@@ -72,3 +72,7 @@ create policy "Users can insert their own profile" on profiles
 
 create policy "Users can update own profile" on profiles
   for update using (id = auth.uid()) with check (id = auth.uid());
+
+-- Performance indexes for RLS policies
+create index if not exists idx_profiles_tenant_id on profiles(tenant_id);
+create index if not exists idx_documents_tenant_modified on documents(tenant_id, modified_at desc);

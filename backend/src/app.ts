@@ -27,6 +27,10 @@ app.use(
 );
 app.use(express.json());
 
+app.get('/health', (_req: Request, res: Response) => {
+  res.json({ status: 'ok' });
+});
+
 const getTenant = (tenantId: string | undefined): TenantDefinition | null => {
   if (!tenantId) return null;
   return tenants.find((tenant) => tenant.id === tenantId) ?? null;
